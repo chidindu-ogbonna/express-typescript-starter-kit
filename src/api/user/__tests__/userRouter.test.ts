@@ -6,6 +6,19 @@ import { users } from "@/api/user/userRepository";
 import type { ServiceResponse } from "@/common/models/serviceResponse";
 import { app } from "@/server";
 
+function compareUsers(mockUser: User, responseUser: User) {
+  if (!mockUser || !responseUser) {
+    throw new Error("Invalid test data: mockUser or responseUser is undefined");
+  }
+
+  expect(responseUser.id).toEqual(mockUser.id);
+  expect(responseUser.name).toEqual(mockUser.name);
+  expect(responseUser.email).toEqual(mockUser.email);
+  expect(responseUser.age).toEqual(mockUser.age);
+  expect(new Date(responseUser.createdAt)).toEqual(mockUser.createdAt);
+  expect(new Date(responseUser.updatedAt)).toEqual(mockUser.updatedAt);
+}
+
 describe("User API Endpoints", () => {
   describe("GET /users", () => {
     it("should return a list of users", async () => {
@@ -69,16 +82,3 @@ describe("User API Endpoints", () => {
     });
   });
 });
-
-function compareUsers(mockUser: User, responseUser: User) {
-  if (!mockUser || !responseUser) {
-    throw new Error("Invalid test data: mockUser or responseUser is undefined");
-  }
-
-  expect(responseUser.id).toEqual(mockUser.id);
-  expect(responseUser.name).toEqual(mockUser.name);
-  expect(responseUser.email).toEqual(mockUser.email);
-  expect(responseUser.age).toEqual(mockUser.age);
-  expect(new Date(responseUser.createdAt)).toEqual(mockUser.createdAt);
-  expect(new Date(responseUser.updatedAt)).toEqual(mockUser.updatedAt);
-}
