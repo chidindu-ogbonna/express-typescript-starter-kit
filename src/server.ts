@@ -1,14 +1,14 @@
-import { openAPIRouter } from "@/api-docs/openAPIRouter";
-import { healthCheckRouter } from "@/api/healthCheck/healthCheckRouter";
-import { userRouter } from "@/api/user/userRouter";
-import { logger } from "@/common/middleware/appLogger";
-import errorHandler from "@/common/middleware/errorHandler";
-// import rateLimiter from "@/common/middleware/rateLimiter";
-import requestLogger from "@/common/middleware/requestLogger";
-import { env } from "@/common/utils/envConfig";
 import cors from "cors";
 import express, { type Express } from "express";
 import helmet from "helmet";
+import { openAPIRouter } from "@/api-docs/openAPIRouter";
+import { healthCheckRouter } from "@/api/healthCheck/healthCheckRouter";
+import { userRouter } from "@/api/user/userRouter";
+import { logger } from "@/core/middleware/appLogger";
+import errorHandler from "@/core/middleware/errorHandler";
+// import rateLimiter from "@/common/middleware/rateLimiter";
+import requestLogger from "@/core/middleware/requestLogger";
+import { env } from "@/core/utils/envConfig";
 import { webBrowserRouter } from "./api/web-browser/router";
 
 const app: Express = express();
