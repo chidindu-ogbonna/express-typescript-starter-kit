@@ -1,7 +1,7 @@
 import type { Request, RequestHandler, Response } from "express";
-import { logger } from "@/common/middleware/appLogger";
-import { ServiceResponse } from "@/common/models/serviceResponse";
-import { handleServiceResponse } from "@/common/utils/httpHandlers";
+import { logger } from "@/core/middleware/appLogger";
+import { ServiceResponse } from "@/core/models/serviceResponse";
+import { handleServiceResponse } from "@/core/utils/httpHandlers";
 
 class WebBrowserController {
   private readonly logger = logger.child({ module: "WebBrowserController" });

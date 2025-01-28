@@ -3,7 +3,7 @@ import express, { type Router } from "express";
 import { z } from "zod";
 
 import { createApiResponse } from "@/api-docs/openAPIResponseBuilders";
-import { validateRequest } from "@/common/utils/httpHandlers";
+import { validateRequest } from "@/core/utils/httpHandlers";
 import { webBrowserController } from "./controller";
 
 export const webBrowserRegistry = new OpenAPIRegistry();

@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run in Development Mode",
+      "name": "Run DEV",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "npm",
@@ -12,7 +12,7 @@
       "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"]
     },
     {
-      "name": "Run in Production Mode",
+      "name": "Run PROD",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "npm",

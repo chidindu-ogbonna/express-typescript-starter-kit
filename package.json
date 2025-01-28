@@ -9,6 +9,7 @@
   "private": true,
   "scripts": {
     "dev": "tsx watch --clear-screen=false src/index.ts | pino-pretty",
+    "dev:langgraph": "npx @langchain/langgraph-cli dev",
     "build": "tsup",
     "start": "node dist/index.js",
     "clean": "rimraf dist coverage",
@@ -21,22 +22,40 @@
   "dependencies": {
     "@ai-sdk/anthropic": "^0.0.55",
     "@asteasolutions/zod-to-openapi": "^7.0.0",
+    "@langchain/anthropic": "^0.3.3",
+    "@langchain/aws": "^0.1.0",
+    "@langchain/cohere": "^0.3.0",
+    "@langchain/community": "^0.3.27",
+    "@langchain/core": "^0.3.36",
+    "@langchain/google-genai": "^0.1.0",
+    "@langchain/google-vertexai": "^0.1.0",
+    "@langchain/groq": "^0.1.2",
+    "@langchain/langgraph": "^0.2.11",
+    "@langchain/langgraph-sdk": "^0.0.14",
+    "@langchain/mistralai": "^0.1.1",
+    "@langchain/ollama": "^0.1.0",
+    "@langchain/openai": "^0.3.5",
     "ai": "^3.4.33",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "duck-duck-scrape": "^2.2.7",
     "envalid": "^8.0.0",
     "express": "^4.19.2",
     "express-rate-limit": "^7.2.0",
     "helmet": "^8.0.0",
     "http-status-codes": "^2.3.0",
+    "langchain": "^0.3.2",
+    "langsmith": "^0.1.61",
     "pino": "^9.4.0",
     "pino-http": "^10.0.0",
     "swagger-ui-express": "^5.0.0",
+    "ts-node": "^10.9.2",
+    "uuid": "^10.0.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@eslint/js": "^9.14.0",
+    "@eslint/js": "^9.19.0",
     "@types/cors": "^2.8.17",
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^4.17.21",
@@ -44,10 +63,17 @@
     "@types/swagger-ui-express": "^4.1.6",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^9.19.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-airbnb": "^0.0.1-security",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.3",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "pino-pretty": "^11.0.0",
+    "prettier": "^3.4.2",
     "rimraf": "^6.0.0",
     "supertest": "^7.0.0",
     "tsup": "^8.0.2",
@@ -58,10 +84,16 @@
     "vitest": "^2.0.0"
   },
   "lint-staged": {
-    "*.{js,ts,cjs,mjs,d.cts,d.mts,json,jsonc}": ["biome check --apply --no-errors-on-unmatched"]
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,json,jsonc}": [
+      "biome check --apply --no-errors-on-unmatched"
+    ]
   },
   "tsup": {
-    "entry": ["src", "!src/**/__tests__/**", "!src/**/*.test.*"],
+    "entry": [
+      "src",
+      "!src/**/__tests__/**",
+      "!src/**/*.test.*"
+    ],
     "splitting": false,
     "sourcemap": true,
     "clean": true
