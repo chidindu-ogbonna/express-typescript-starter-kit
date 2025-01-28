@@ -12,7 +12,7 @@ async function callModel(
   state: typeof MessagesAnnotation.State,
   config: RunnableConfig,
 ): Promise<typeof MessagesAnnotation.Update> {
-  /** Call the LLM powering our agent. **/
+  /** Call the LLM powering our agent. * */
   const configuration = ensureConfiguration(config);
 
   // Feel free to customize the prompt, model, and other logic!
@@ -35,16 +35,15 @@ async function callModel(
 
 // Define the function that determines whether to continue or not
 function routeModelOutput(state: typeof MessagesAnnotation.State): string {
-  const messages = state.messages;
+  const { messages } = state;
   const lastMessage = messages[messages.length - 1];
   // If the LLM is invoking tools, route there.
-  if ((lastMessage as AIMessage)?.tool_calls?.length || 0 > 0) {
+  if ((lastMessage as AIMessage)?.tool_calls?.length || 0) {
     return "tools";
   }
   // Otherwise end the graph.
-  else {
-    return "__end__";
-  }
+
+  return "__end__";
 }
 
 // Define a new graph. We use the prebuilt MessagesAnnotation to define state:
